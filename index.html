@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coming Soon</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+    }
+
+    /* Gradient and Animation for "Coming Soon" Text */
+    h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #7260cd, #feb47b, #ff7e5f, #7260cd);
+      background-size: 200%;
+      color: transparent;
+      background-clip: text;
+      animation: gradientFlow 3s infinite linear;
+    }
+
+    /* Countdown styling */
+    .countdown {
+      font-size: 1em;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(32, 59, 237, 0.8);
+      margin-bottom: 40px;
+    }
+
+    /* Flowing lines under the text */
+    .lines {
+      position: relative;
+      height: 80px;
+      overflow: hidden;
+    }
+
+    .line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff, #00c6ff);
+      opacity: 0.7;
+      animation: lineFlow 4s infinite linear;
+    }
+
+    .line:nth-child(1) { top: 20px; animation-duration: 3s; }
+    .line:nth-child(2) { top: 40px; animation-duration: 4s; }
+    .line:nth-child(3) { top: 60px; animation-duration: 5s; }
+
+    /* Keyframes for text gradient flow */
+    @keyframes gradientFlow {
+      0% { background-position: 0%; }
+      100% { background-position: 200%; }
+    }
+
+    /* Keyframes for flowing line animation */
+    @keyframes lineFlow {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Coming Soon</h1>
+    <div id="countdown" class="countdown"></div>
+    <div class="lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <script>
+    const countdownElement = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const targetDate = new Date("January 31, 2025 23:59:59").getTime();
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `
+        ${days}d ${hours}h ${minutes}m ${seconds}s
+      `;
+
+      if (timeLeft < 0) {
+        countdownElement.innerHTML = "Time's Up!";
+      }
+    }
+
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
