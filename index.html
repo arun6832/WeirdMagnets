@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Inzly — Coming Soon</title>
+  <title>Inzly</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -16,183 +17,244 @@
     }
 
     body{
-      font-family: 'Inter', sans-serif;
+      font-family:'Inter',sans-serif;
       background:#050505;
       color:white;
       overflow:hidden;
-      height:100vh;
+      min-height:100vh;
+
       display:flex;
       justify-content:center;
       align-items:center;
+
       position:relative;
-    }
-
-    /* Background Glow */
-    .bg-glow{
-      position:absolute;
-      width:700px;
-      height:700px;
-      background: radial-gradient(circle, rgba(120,119,255,0.18) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(40px);
-      animation: floatGlow 8s ease-in-out infinite;
-    }
-
-    .bg-glow2{
-      position:absolute;
-      width:500px;
-      height:500px;
-      right:-100px;
-      bottom:-100px;
-      background: radial-gradient(circle, rgba(0,174,255,0.12) 0%, rgba(0,0,0,0) 70%);
-      filter: blur(50px);
-      animation: floatGlow 10s ease-in-out infinite alternate;
-    }
-
-    .container{
-      position:relative;
-      z-index:2;
-      width:90%;
-      max-width:850px;
-      padding:60px;
-      border:1px solid rgba(255,255,255,0.08);
-      background:rgba(255,255,255,0.03);
-      backdrop-filter: blur(20px);
-      border-radius:32px;
-      box-shadow:
-      0 0 60px rgba(98, 92, 255, 0.12),
-      inset 0 0 20px rgba(255,255,255,0.03);
-
-      text-align:center;
-    }
-
-    .tag{
-      display:inline-block;
-      padding:10px 18px;
-      border-radius:999px;
-      background:rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.08);
-      color:#cfcfcf;
-      font-size:13px;
-      letter-spacing:1px;
-      margin-bottom:28px;
-      text-transform:uppercase;
-    }
-
-    .logo{
-      font-size:72px;
-      font-weight:800;
-      letter-spacing:-3px;
-      margin-bottom:20px;
-
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #9ea4ff,
-        #7ee7ff,
-        #ffffff
-      );
-
-      background-size:200%;
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-
-      animation:shine 5s linear infinite;
-    }
-
-    .headline{
-      font-size:20px;
-      line-height:1.7;
-      color:rgba(255,255,255,0.82);
-      max-width:700px;
-      margin:auto;
-      margin-bottom:45px;
-      font-weight:400;
-    }
-
-    .highlight{
-      color:white;
-      font-weight:600;
-    }
-
-    .countdown-wrapper{
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      flex-wrap:wrap;
-      margin-bottom:45px;
-    }
-
-    .time-box{
-      width:120px;
-      height:120px;
-      border-radius:24px;
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-
-      transition:0.3s ease;
-    }
-
-    .time-box:hover{
-      transform:translateY(-6px);
-      background:rgba(255,255,255,0.06);
-    }
-
-    .number{
-      font-size:42px;
-      font-weight:700;
-      margin-bottom:8px;
-
-      background:linear-gradient(180deg,#fff,#8ea2ff);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .label{
-      font-size:13px;
-      color:rgba(255,255,255,0.6);
-      text-transform:uppercase;
-      letter-spacing:2px;
-    }
-
-    .footer-text{
-      font-size:14px;
-      color:rgba(255,255,255,0.45);
-      letter-spacing:0.5px;
     }
 
     .grid{
       position:absolute;
       inset:0;
+
       background-image:
       linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
 
-      background-size:60px 60px;
-      mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
-      z-index:0;
+      background-size:70px 70px;
+
+      mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+    }
+
+    .glow{
+      position:absolute;
+      width:700px;
+      height:700px;
+      background:radial-gradient(circle, rgba(90,100,255,0.18), transparent 70%);
+      filter:blur(50px);
+
+      animation:float 8s ease-in-out infinite;
+    }
+
+    .glow2{
+      position:absolute;
+      width:500px;
+      height:500px;
+      right:-100px;
+      bottom:-100px;
+      background:radial-gradient(circle, rgba(0,195,255,0.12), transparent 70%);
+      filter:blur(60px);
+
+      animation:float 10s ease-in-out infinite alternate;
+    }
+
+    .container{
+      width:90%;
+      max-width:950px;
+
+      position:relative;
+      z-index:10;
+
+      padding:70px;
+
+      border-radius:34px;
+
+      background:rgba(255,255,255,0.03);
+      backdrop-filter:blur(20px);
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      box-shadow:
+      0 0 80px rgba(90,100,255,0.08),
+      inset 0 0 20px rgba(255,255,255,0.02);
+
+      text-align:center;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+
+      padding:10px 18px;
+
+      border-radius:999px;
+
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.08);
+
+      font-size:13px;
+      color:rgba(255,255,255,0.7);
+
+      margin-bottom:35px;
+
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#7f8cff;
+
+      box-shadow:0 0 12px #7f8cff;
+    }
+
+    .logo{
+      font-size:84px;
+      font-weight:800;
+      letter-spacing:-4px;
+
+      margin-bottom:28px;
+
+      background:linear-gradient(
+      90deg,
+      #ffffff,
+      #9ea5ff,
+      #8ce6ff,
+      #ffffff
+      );
+
+      background-size:200%;
+
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+
+      animation:shine 6s linear infinite;
+    }
+
+    .headline{
+      font-size:22px;
+      line-height:1.8;
+      max-width:760px;
+      margin:auto;
+
+      color:rgba(255,255,255,0.78);
+
+      margin-bottom:50px;
+    }
+
+    .headline span{
+      color:white;
+      font-weight:600;
+    }
+
+    .access-box{
+      width:100%;
+      max-width:650px;
+
+      margin:auto;
+
+      padding:12px;
+
+      border-radius:22px;
+
+      background:rgba(255,255,255,0.04);
+
+      border:1px solid rgba(255,255,255,0.08);
+
+      display:flex;
+      gap:12px;
+    }
+
+    .access-box input{
+      flex:1;
+      border:none;
+      outline:none;
+
+      background:transparent;
+
+      color:white;
+
+      padding:20px;
+      font-size:16px;
+    }
+
+    .access-box input::placeholder{
+      color:rgba(255,255,255,0.35);
+    }
+
+    .access-box button{
+      border:none;
+      outline:none;
+
+      padding:0 28px;
+
+      border-radius:16px;
+
+      cursor:pointer;
+
+      font-weight:600;
+      font-size:15px;
+
+      color:white;
+
+      background:linear-gradient(
+      135deg,
+      #6c7cff,
+      #4fd1ff
+      );
+
+      transition:0.3s ease;
+    }
+
+    .access-box button:hover{
+      transform:translateY(-2px) scale(1.02);
+
+      box-shadow:0 10px 30px rgba(79,209,255,0.25);
+    }
+
+    .sub{
+      margin-top:18px;
+      font-size:14px;
+      color:rgba(255,255,255,0.4);
+    }
+
+    .footer{
+      margin-top:60px;
+      font-size:13px;
+      color:rgba(255,255,255,0.3);
+
+      letter-spacing:1px;
     }
 
     @keyframes shine{
       0%{
         background-position:0%;
       }
+
       100%{
         background-position:200%;
       }
     }
 
-    @keyframes floatGlow{
+    @keyframes float{
       0%{
         transform:translateY(0px) translateX(0px);
       }
+
       50%{
-        transform:translateY(-30px) translateX(20px);
+        transform:translateY(-20px) translateX(20px);
       }
+
       100%{
         transform:translateY(0px) translateX(0px);
       }
@@ -201,25 +263,25 @@
     @media(max-width:768px){
 
       .container{
-        padding:35px 25px;
+        padding:40px 25px;
       }
 
       .logo{
-        font-size:52px;
+        font-size:58px;
       }
 
       .headline{
-        font-size:16px;
+        font-size:17px;
       }
 
-      .time-box{
-        width:90px;
-        height:90px;
+      .access-box{
+        flex-direction:column;
       }
 
-      .number{
-        font-size:30px;
+      .access-box button{
+        height:60px;
       }
+
     }
 
   </style>
@@ -229,13 +291,14 @@
 
   <div class="grid"></div>
 
-  <div class="bg-glow"></div>
-  <div class="bg-glow2"></div>
+  <div class="glow"></div>
+  <div class="glow2"></div>
 
   <div class="container">
 
     <div class="tag">
-      The Future Is Quietly Loading
+      <div class="dot"></div>
+      Building Something Different
     </div>
 
     <div class="logo">
@@ -243,82 +306,52 @@
     </div>
 
     <div class="headline">
-      A new era of digital experience is being crafted behind the scenes.
-      <span class="highlight">
-        Intelligent. Seamless. Limitless.
-      </span>
+      We’re quietly crafting a next-generation experience designed to redefine how people interact, build, and move in the digital world.
       <br><br>
-      Built for those who move before the world catches on.
+      <span>
+        Minimal on the surface. Powerful underneath.
+      </span>
     </div>
 
-    <div class="countdown-wrapper">
+    <!-- EARLY ACCESS FORM -->
 
-      <div class="time-box">
-        <div class="number" id="days">00</div>
-        <div class="label">Days</div>
-      </div>
+    <form 
+      class="access-box"
+      action="https://formsubmit.co/weirdmagnetsin@gmail.com"
+      method="POST"
+    >
 
-      <div class="time-box">
-        <div class="number" id="hours">00</div>
-        <div class="label">Hours</div>
-      </div>
+      <!-- Disable captcha -->
+      <input type="hidden" name="_captcha" value="false">
 
-      <div class="time-box">
-        <div class="number" id="minutes">00</div>
-        <div class="label">Minutes</div>
-      </div>
+      <!-- Email subject -->
+      <input type="hidden" name="_subject" value="New Inzly Early Access Request">
 
-      <div class="time-box">
-        <div class="number" id="seconds">00</div>
-        <div class="label">Seconds</div>
-      </div>
+      <!-- Optional redirect after submit -->
+      <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
 
+      <input 
+        type="email"
+        name="email"
+        placeholder="Enter your email for early access"
+        required
+      >
+
+      <button type="submit">
+        Request Access
+      </button>
+
+    </form>
+
+    <div class="sub">
+      Limited early access invitations will be rolled out selectively.
     </div>
 
-    <div class="footer-text">
-      © 2026 Inzly. Designed for the next generation.
+    <div class="footer">
+      © 2026 Inzly — Designed for the future.
     </div>
 
   </div>
-
-  <script>
-
-    const targetDate = new Date("December 31, 2026 23:59:59").getTime();
-
-    function updateCountdown(){
-
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("days").innerHTML = days;
-      document.getElementById("hours").innerHTML = hours;
-      document.getElementById("minutes").innerHTML = minutes;
-      document.getElementById("seconds").innerHTML = seconds;
-
-      if(distance < 0){
-        document.querySelector(".countdown-wrapper").innerHTML = `
-          <div style="
-            font-size:32px;
-            font-weight:700;
-            color:white;
-          ">
-            We Are Live 🚀
-          </div>
-        `;
-      }
-
-    }
-
-    updateCountdown();
-
-    setInterval(updateCountdown,1000);
-
-  </script>
 
 </body>
 </html>
