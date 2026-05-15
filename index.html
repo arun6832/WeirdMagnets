@@ -16,140 +16,129 @@
       box-sizing:border-box;
     }
 
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       font-family:'Inter',sans-serif;
-      background:#050505;
+      background:#000;
       color:white;
       overflow:hidden;
-      min-height:100vh;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
+      height:100vh;
       position:relative;
     }
 
-    .grid{
+    /* Soft Background */
+
+    .bg{
       position:absolute;
       inset:0;
-
-      background-image:
-      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-
-      background-size:70px 70px;
-
-      mask-image: radial-gradient(circle at center, black 35%, transparent 80%);
+      overflow:hidden;
     }
 
     .glow{
       position:absolute;
       width:700px;
       height:700px;
-      background:radial-gradient(circle, rgba(90,100,255,0.18), transparent 70%);
-      filter:blur(50px);
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(90,100,255,0.12), transparent 70%);
+      filter:blur(60px);
 
-      animation:float 8s ease-in-out infinite;
+      top:-200px;
+      left:50%;
+      transform:translateX(-50%);
+
+      animation:float 10s ease-in-out infinite;
     }
 
     .glow2{
       position:absolute;
       width:500px;
       height:500px;
-      right:-100px;
-      bottom:-100px;
-      background:radial-gradient(circle, rgba(0,195,255,0.12), transparent 70%);
-      filter:blur(60px);
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(0,180,255,0.10), transparent 70%);
+      filter:blur(80px);
 
-      animation:float 10s ease-in-out infinite alternate;
+      bottom:-200px;
+      right:-100px;
+
+      animation:float2 12s ease-in-out infinite;
     }
 
-    .container{
-      width:90%;
-      max-width:950px;
+    .noise{
+      position:absolute;
+      inset:0;
+      opacity:0.03;
+      background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+    }
 
+    /* Main */
+
+    .hero{
       position:relative;
       z-index:10;
 
-      padding:70px;
+      width:100%;
+      height:100vh;
 
-      border-radius:34px;
-
-      background:rgba(255,255,255,0.03);
-      backdrop-filter:blur(20px);
-
-      border:1px solid rgba(255,255,255,0.08);
-
-      box-shadow:
-      0 0 80px rgba(90,100,255,0.08),
-      inset 0 0 20px rgba(255,255,255,0.02);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
 
       text-align:center;
+
+      padding:30px;
     }
 
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-
-      padding:10px 18px;
-
-      border-radius:999px;
-
-      background:rgba(255,255,255,0.04);
-      border:1px solid rgba(255,255,255,0.08);
-
-      font-size:13px;
-      color:rgba(255,255,255,0.7);
-
-      margin-bottom:35px;
-
-      letter-spacing:1px;
+    .top-tag{
+      font-size:12px;
+      letter-spacing:2px;
       text-transform:uppercase;
-    }
 
-    .dot{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:#7f8cff;
+      color:rgba(255,255,255,0.5);
 
-      box-shadow:0 0 12px #7f8cff;
+      margin-bottom:30px;
+
+      animation:fadeUp 1s ease forwards;
     }
 
     .logo{
-      font-size:84px;
+      font-size:110px;
       font-weight:800;
-      letter-spacing:-4px;
-
-      margin-bottom:28px;
+      letter-spacing:-6px;
+      line-height:1;
 
       background:linear-gradient(
-      90deg,
-      #ffffff,
-      #9ea5ff,
-      #8ce6ff,
-      #ffffff
+      180deg,
+      #ffffff 0%,
+      #d9d9d9 40%,
+      #6f7cff 100%
       );
-
-      background-size:200%;
 
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
 
-      animation:shine 6s linear infinite;
+      opacity:0;
+      animation:fadeUp 1s ease forwards;
+      animation-delay:0.2s;
     }
 
     .headline{
-      font-size:22px;
-      line-height:1.8;
+      margin-top:35px;
+
       max-width:760px;
-      margin:auto;
 
-      color:rgba(255,255,255,0.78);
+      font-size:24px;
+      line-height:1.7;
+      font-weight:400;
 
-      margin-bottom:50px;
+      color:rgba(255,255,255,0.68);
+
+      opacity:0;
+      animation:fadeUp 1s ease forwards;
+      animation-delay:0.4s;
     }
 
     .headline span{
@@ -157,129 +146,217 @@
       font-weight:600;
     }
 
-    .access-box{
+    /* Apple style input */
+
+    .access{
+      margin-top:50px;
+
+      display:flex;
+      align-items:center;
+      gap:14px;
+
+      padding:10px;
+
       width:100%;
-      max-width:650px;
-
-      margin:auto;
-
-      padding:12px;
-
-      border-radius:22px;
+      max-width:620px;
 
       background:rgba(255,255,255,0.04);
 
       border:1px solid rgba(255,255,255,0.08);
 
-      display:flex;
-      gap:12px;
-    }
+      border-radius:999px;
 
-    .access-box input{
-      flex:1;
-      border:none;
-      outline:none;
+      backdrop-filter:blur(20px);
 
-      background:transparent;
-
-      color:white;
-
-      padding:20px;
-      font-size:16px;
-    }
-
-    .access-box input::placeholder{
-      color:rgba(255,255,255,0.35);
-    }
-
-    .access-box button{
-      border:none;
-      outline:none;
-
-      padding:0 28px;
-
-      border-radius:16px;
-
-      cursor:pointer;
-
-      font-weight:600;
-      font-size:15px;
-
-      color:white;
-
-      background:linear-gradient(
-      135deg,
-      #6c7cff,
-      #4fd1ff
-      );
+      opacity:0;
+      animation:fadeUp 1s ease forwards;
+      animation-delay:0.6s;
 
       transition:0.3s ease;
     }
 
-    .access-box button:hover{
-      transform:translateY(-2px) scale(1.02);
+    .access:hover{
+      background:rgba(255,255,255,0.06);
+      border-color:rgba(255,255,255,0.12);
+    }
 
-      box-shadow:0 10px 30px rgba(79,209,255,0.25);
+    .access input{
+      flex:1;
+
+      background:transparent;
+      border:none;
+      outline:none;
+
+      padding:18px 24px;
+
+      font-size:16px;
+      color:white;
+
+      font-family:'Inter',sans-serif;
+    }
+
+    .access input::placeholder{
+      color:rgba(255,255,255,0.35);
+    }
+
+    .access button{
+      border:none;
+      outline:none;
+
+      padding:16px 28px;
+
+      border-radius:999px;
+
+      background:white;
+      color:black;
+
+      font-weight:600;
+      font-size:15px;
+
+      cursor:pointer;
+
+      transition:0.3s ease;
+    }
+
+    .access button:hover{
+      transform:scale(1.03);
+      opacity:0.9;
     }
 
     .sub{
-      margin-top:18px;
-      font-size:14px;
-      color:rgba(255,255,255,0.4);
+      margin-top:20px;
+
+      font-size:13px;
+      color:rgba(255,255,255,0.35);
+
+      opacity:0;
+      animation:fadeUp 1s ease forwards;
+      animation-delay:0.8s;
     }
 
-    .footer{
-      margin-top:60px;
-      font-size:13px;
-      color:rgba(255,255,255,0.3);
+    .bottom{
+      position:absolute;
+      bottom:30px;
+
+      font-size:12px;
+      color:rgba(255,255,255,0.25);
 
       letter-spacing:1px;
     }
 
-    @keyframes shine{
-      0%{
-        background-position:0%;
+    /* Floating Lines */
+
+    .line{
+      position:absolute;
+      width:300px;
+      height:1px;
+
+      background:linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,0.25),
+      transparent
+      );
+
+      opacity:0.4;
+    }
+
+    .line1{
+      top:20%;
+      left:-300px;
+      animation:moveLine 9s linear infinite;
+    }
+
+    .line2{
+      bottom:22%;
+      right:-300px;
+      animation:moveLineReverse 11s linear infinite;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(20px);
       }
 
-      100%{
-        background-position:200%;
+      to{
+        opacity:1;
+        transform:translateY(0px);
       }
     }
 
     @keyframes float{
       0%{
-        transform:translateY(0px) translateX(0px);
+        transform:translateX(-50%) translateY(0px);
       }
 
       50%{
-        transform:translateY(-20px) translateX(20px);
+        transform:translateX(-48%) translateY(25px);
       }
 
       100%{
-        transform:translateY(0px) translateX(0px);
+        transform:translateX(-50%) translateY(0px);
+      }
+    }
+
+    @keyframes float2{
+      0%{
+        transform:translateY(0px);
+      }
+
+      50%{
+        transform:translateY(-20px);
+      }
+
+      100%{
+        transform:translateY(0px);
+      }
+    }
+
+    @keyframes moveLine{
+      0%{
+        transform:translateX(0);
+      }
+
+      100%{
+        transform:translateX(160vw);
+      }
+    }
+
+    @keyframes moveLineReverse{
+      0%{
+        transform:translateX(0);
+      }
+
+      100%{
+        transform:translateX(-160vw);
       }
     }
 
     @media(max-width:768px){
 
-      .container{
-        padding:40px 25px;
-      }
-
       .logo{
-        font-size:58px;
+        font-size:70px;
+        letter-spacing:-3px;
       }
 
       .headline{
-        font-size:17px;
+        font-size:18px;
       }
 
-      .access-box{
+      .access{
         flex-direction:column;
+        border-radius:28px;
+        padding:16px;
       }
 
-      .access-box button{
-        height:60px;
+      .access input{
+        width:100%;
+        text-align:center;
+      }
+
+      .access button{
+        width:100%;
       }
 
     }
@@ -289,16 +366,19 @@
 
 <body>
 
-  <div class="grid"></div>
+  <div class="bg">
+    <div class="glow"></div>
+    <div class="glow2"></div>
+    <div class="noise"></div>
 
-  <div class="glow"></div>
-  <div class="glow2"></div>
+    <div class="line line1"></div>
+    <div class="line line2"></div>
+  </div>
 
-  <div class="container">
+  <section class="hero">
 
-    <div class="tag">
-      <div class="dot"></div>
-      Building Something Different
+    <div class="top-tag">
+      SOMETHING BIG IS QUIETLY BREWING
     </div>
 
     <div class="logo">
@@ -306,31 +386,23 @@
     </div>
 
     <div class="headline">
-      We’re quietly crafting a next-generation experience designed to redefine how people interact, build, and move in the digital world.
+      Building a new layer of digital experience focused on
+      <span>speed, intelligence, simplicity,</span>
+      and obsession-level detail.
       <br><br>
-      <span>
-        Minimal on the surface. Powerful underneath.
-      </span>
+      Created for people who see the future early.
     </div>
 
-    <!-- EARLY ACCESS FORM -->
-
-    <form 
-      class="access-box"
+    <form
+      class="access"
       action="https://formsubmit.co/weirdmagnetsin@gmail.com"
       method="POST"
     >
 
-      <!-- Disable captcha -->
       <input type="hidden" name="_captcha" value="false">
-
-      <!-- Email subject -->
       <input type="hidden" name="_subject" value="New Inzly Early Access Request">
 
-      <!-- Optional redirect after submit -->
-      <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
-
-      <input 
+      <input
         type="email"
         name="email"
         placeholder="Enter your email for early access"
@@ -344,14 +416,14 @@
     </form>
 
     <div class="sub">
-      Limited early access invitations will be rolled out selectively.
+      Selected early members will get priority access.
     </div>
 
-    <div class="footer">
-      © 2026 Inzly — Designed for the future.
+    <div class="bottom">
+      © 2026 Inzly
     </div>
 
-  </div>
+  </section>
 
 </body>
 </html>
