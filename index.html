@@ -29,7 +29,7 @@
       position:relative;
     }
 
-    /* Soft Background */
+    /* Background */
 
     .bg{
       position:absolute;
@@ -43,9 +43,9 @@
       height:700px;
       border-radius:50%;
       background:radial-gradient(circle, rgba(90,100,255,0.12), transparent 70%);
-      filter:blur(60px);
+      filter:blur(70px);
 
-      top:-200px;
+      top:-250px;
       left:50%;
       transform:translateX(-50%);
 
@@ -57,11 +57,11 @@
       width:500px;
       height:500px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(0,180,255,0.10), transparent 70%);
+      background:radial-gradient(circle, rgba(0,180,255,0.08), transparent 70%);
       filter:blur(80px);
 
       bottom:-200px;
-      right:-100px;
+      right:-120px;
 
       animation:float2 12s ease-in-out infinite;
     }
@@ -69,7 +69,7 @@
     .noise{
       position:absolute;
       inset:0;
-      opacity:0.03;
+      opacity:0.02;
       background-image:url("https://grainy-gradients.vercel.app/noise.svg");
     }
 
@@ -92,14 +92,14 @@
       padding:30px;
     }
 
-    .top-tag{
+    .tag{
       font-size:12px;
       letter-spacing:2px;
       text-transform:uppercase;
 
-      color:rgba(255,255,255,0.5);
+      color:rgba(255,255,255,0.45);
 
-      margin-bottom:30px;
+      margin-bottom:28px;
 
       animation:fadeUp 1s ease forwards;
     }
@@ -113,8 +113,8 @@
       background:linear-gradient(
       180deg,
       #ffffff 0%,
-      #d9d9d9 40%,
-      #6f7cff 100%
+      #d9d9d9 45%,
+      #7b84ff 100%
       );
 
       -webkit-background-clip:text;
@@ -126,15 +126,15 @@
     }
 
     .headline{
-      margin-top:35px;
+      margin-top:32px;
 
       max-width:760px;
 
-      font-size:24px;
+      font-size:23px;
       line-height:1.7;
       font-weight:400;
 
-      color:rgba(255,255,255,0.68);
+      color:rgba(255,255,255,0.65);
 
       opacity:0;
       animation:fadeUp 1s ease forwards;
@@ -146,88 +146,118 @@
       font-weight:600;
     }
 
-    /* Apple style input */
+    /* FORM */
 
     .access{
-      margin-top:50px;
+      margin-top:52px;
+
+      width:100%;
+      max-width:640px;
 
       display:flex;
       align-items:center;
-      gap:14px;
 
-      padding:10px;
+      padding:8px;
 
-      width:100%;
-      max-width:620px;
+      border-radius:999px;
 
       background:rgba(255,255,255,0.04);
 
       border:1px solid rgba(255,255,255,0.08);
 
-      border-radius:999px;
-
       backdrop-filter:blur(20px);
+
+      transition:0.3s ease;
 
       opacity:0;
       animation:fadeUp 1s ease forwards;
       animation-delay:0.6s;
-
-      transition:0.3s ease;
     }
 
     .access:hover{
-      background:rgba(255,255,255,0.06);
-      border-color:rgba(255,255,255,0.12);
+      border-color:rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.05);
     }
 
     .access input{
+
       flex:1;
 
-      background:transparent;
+      height:62px;
+
+      background:transparent !important;
+
       border:none;
       outline:none;
 
-      padding:18px 24px;
+      padding:0 24px;
 
-      font-size:16px;
       color:white;
 
+      font-size:16px;
       font-family:'Inter',sans-serif;
+
+      appearance:none;
+      -webkit-appearance:none;
+      box-shadow:none;
+
+    }
+
+    /* FIXES AUTOFILL ISSUE */
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+
+      -webkit-box-shadow:0 0 0 1000px transparent inset !important;
+      -webkit-text-fill-color:white !important;
+
+      transition:background-color 9999s ease-in-out 0s;
+
+      caret-color:white;
+
     }
 
     .access input::placeholder{
-      color:rgba(255,255,255,0.35);
+      color:rgba(255,255,255,0.32);
     }
 
     .access button{
+
+      height:54px;
+
+      padding:0 28px;
+
       border:none;
       outline:none;
-
-      padding:16px 28px;
 
       border-radius:999px;
 
       background:white;
       color:black;
 
-      font-weight:600;
       font-size:15px;
+      font-weight:600;
 
       cursor:pointer;
 
       transition:0.3s ease;
+
+      flex-shrink:0;
+
     }
 
     .access button:hover{
       transform:scale(1.03);
-      opacity:0.9;
+      opacity:0.92;
     }
 
     .sub{
-      margin-top:20px;
+      margin-top:18px;
 
       font-size:13px;
-      color:rgba(255,255,255,0.35);
+      color:rgba(255,255,255,0.32);
 
       opacity:0;
       animation:fadeUp 1s ease forwards;
@@ -236,25 +266,25 @@
 
     .bottom{
       position:absolute;
-      bottom:30px;
+      bottom:28px;
 
       font-size:12px;
-      color:rgba(255,255,255,0.25);
+      color:rgba(255,255,255,0.22);
 
       letter-spacing:1px;
     }
 
-    /* Floating Lines */
+    /* Floating lines */
 
     .line{
       position:absolute;
-      width:300px;
+      width:320px;
       height:1px;
 
       background:linear-gradient(
       90deg,
       transparent,
-      rgba(255,255,255,0.25),
+      rgba(255,255,255,0.18),
       transparent
       );
 
@@ -263,17 +293,20 @@
 
     .line1{
       top:20%;
-      left:-300px;
+      left:-320px;
       animation:moveLine 9s linear infinite;
     }
 
     .line2{
-      bottom:22%;
-      right:-300px;
-      animation:moveLineReverse 11s linear infinite;
+      bottom:20%;
+      right:-320px;
+      animation:moveLineReverse 12s linear infinite;
     }
 
+    /* Animations */
+
     @keyframes fadeUp{
+
       from{
         opacity:0;
         transform:translateY(20px);
@@ -281,11 +314,13 @@
 
       to{
         opacity:1;
-        transform:translateY(0px);
+        transform:translateY(0);
       }
+
     }
 
     @keyframes float{
+
       0%{
         transform:translateX(-50%) translateY(0px);
       }
@@ -297,9 +332,11 @@
       100%{
         transform:translateX(-50%) translateY(0px);
       }
+
     }
 
     @keyframes float2{
+
       0%{
         transform:translateY(0px);
       }
@@ -311,9 +348,11 @@
       100%{
         transform:translateY(0px);
       }
+
     }
 
     @keyframes moveLine{
+
       0%{
         transform:translateX(0);
       }
@@ -321,9 +360,11 @@
       100%{
         transform:translateX(160vw);
       }
+
     }
 
     @keyframes moveLineReverse{
+
       0%{
         transform:translateX(0);
       }
@@ -331,12 +372,19 @@
       100%{
         transform:translateX(-160vw);
       }
+
     }
+
+    /* Mobile */
 
     @media(max-width:768px){
 
+      body{
+        overflow:auto;
+      }
+
       .logo{
-        font-size:70px;
+        font-size:72px;
         letter-spacing:-3px;
       }
 
@@ -347,7 +395,8 @@
       .access{
         flex-direction:column;
         border-radius:28px;
-        padding:16px;
+        padding:14px;
+        gap:12px;
       }
 
       .access input{
@@ -367,17 +416,19 @@
 <body>
 
   <div class="bg">
+
     <div class="glow"></div>
     <div class="glow2"></div>
     <div class="noise"></div>
 
     <div class="line line1"></div>
     <div class="line line2"></div>
+
   </div>
 
   <section class="hero">
 
-    <div class="top-tag">
+    <div class="tag">
       SOMETHING BIG IS QUIETLY BREWING
     </div>
 
@@ -386,26 +437,26 @@
     </div>
 
     <div class="headline">
+
       Building a new layer of digital experience focused on
       <span>speed, intelligence, simplicity,</span>
       and obsession-level detail.
+
       <br><br>
+
       Created for people who see the future early.
+
     </div>
 
-    <form
-      class="access"
-      action="https://formsubmit.co/weirdmagnetsin@gmail.com"
-      method="POST"
-    >
+    <!-- FORM -->
 
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_subject" value="New Inzly Early Access Request">
+    <form class="access" onsubmit="sendMail(event)">
 
       <input
         type="email"
-        name="email"
+        id="email"
         placeholder="Enter your email for early access"
+        autocomplete="email"
         required
       >
 
@@ -424,6 +475,34 @@
     </div>
 
   </section>
+
+  <script>
+
+    function sendMail(e){
+
+      e.preventDefault();
+
+      const email =
+      document.getElementById("email").value;
+
+      const subject = encodeURIComponent(
+        "Inzly Early Access Request"
+      );
+
+      const body = encodeURIComponent(
+`Hey Inzly Team,
+
+I would like to request early access.
+
+Email: ${email}`
+      );
+
+      window.location.href =
+      `mailto:weirdmagnetsin@gmail.com?subject=${subject}&body=${body}`;
+
+    }
+
+  </script>
 
 </body>
 </html>
